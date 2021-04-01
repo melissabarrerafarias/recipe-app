@@ -49,6 +49,21 @@ const resolvers = {
       }
       const token = signToken(user);
       return { token, user };
+    }, 
+    addRecipe: async (parent, args, context) => {
+      if (context.user) {
+        const recipe = await Recipe.create({ ...args, username: context.user.username });
+    
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { recipes: recipe._id } },
+          { new: true }
+        );
+    
+        return recipe;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
     }
   }
 };
