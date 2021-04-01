@@ -16,15 +16,21 @@ type Recipe {
 }
 
 type Query {
+  currentUser: User
   users: [User]
   user(username: String!): User
   recipes(username: String): [Recipe]
   recipe(_id: ID!): Recipe
 }
 
+type Auth {
+  token: ID!
+  user: User
+}
+
 type Mutation {
-  login(username: String!, password: String!): User
-  addUser(username: String!, password: String!): User
+  login(username: String!, password: String!): Auth
+  addUser(username: String!, password: String!): Auth
   addRecipe(recipeTitle: String!, recipeDescription: String!): Recipe
 }
 `;

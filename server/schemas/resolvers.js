@@ -1,8 +1,19 @@
 const { User, Recipe } = require('../models');
+const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
   Query: {
+    currentUser: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id })
+          .select('-__v -password')
+          .populate('recipes')
+    
+        return userData;
+      }
+      throw new AuthenticationError('Not logged in');
+    },
     users: async () => {//find all users
       return User.find()
         .select('-__v -password')//hides __v and password from result 
@@ -24,7 +35,8 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);//uses whatever is passed in as args to create User
-      return user;
+      const token = signToken(user);
+      return { token, user };
     },
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });//find one user by username
@@ -35,7 +47,8 @@ const resolvers = {
       if (!correctPw) {//if password is not correct throw auth error
         throw new AuthenticationError('Woah there... your credentials are not matching the ones in our database!');
       }
-      return user;
+      const token = signToken(user);
+      return { token, user };
     }
   }
 };
