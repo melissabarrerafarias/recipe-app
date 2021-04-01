@@ -5,7 +5,7 @@ import ApolloClient from 'apollo-boost';
 import Home from './pages/Home';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:3001/graphql'
+  uri: '/graphql'
 });
 
 function App() {
