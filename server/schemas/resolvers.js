@@ -76,6 +76,16 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!')
     },
+    deleteRecipe: async (parent, { recipeId }, context) => {
+      if (context.user) {
+        const deletedRecipe = await Recipe.findOneAndRemove(
+          { _id: recipeId },
+          { new: true }
+        );
+        return deletedRecipe;
+      }
+      throw new AuthenticationError("You need to be logged in to delete!");
+    },
   }
 };
 

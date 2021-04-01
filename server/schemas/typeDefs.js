@@ -41,6 +41,7 @@ type Mutation {
   addUser(username: String!, password: String!): Auth
   addRecipe(recipeTitle: String!, recipeDescription: String!): Recipe
   addFavorited(recipeId: ID!): Recipe
+  deleteRecipe(recipeId: ID!): Recipe
 }
 `;
 
