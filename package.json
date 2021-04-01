@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/melissabarrerafarias/recipe-app#readme",
   "dependencies": {
+    "cloudinary": "^1.25.1",
+    "cloudinary-core": "^2.11.3",
     "if-env": "^1.0.4"
   },
   "devDependencies": {
