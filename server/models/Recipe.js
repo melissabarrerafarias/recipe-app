@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const moment = require('moment');// import moment for date format
+const FavoritedSchema = require('../models/Favorited'); 
 
 const RecipeSchema = new Schema(
   {
@@ -22,14 +23,20 @@ const RecipeSchema = new Schema(
     username: {
       type: String,
       required: true
-    }
+    }, 
+    favorites: [FavoritedSchema]
   },
   {
     toJSON: {
-      getters: true
+      getters: true, 
+      virtuals: true 
     }
   }
 );
+
+RecipeSchema.virtual('favoritedCount').get(function () {
+    return this.favorites.length;
+});
 
 const Recipe = model('Recipe', RecipeSchema);
 

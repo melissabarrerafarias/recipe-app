@@ -13,6 +13,14 @@ type Recipe {
   recipeDescription: String
   createdAt: String
   username: String
+  favoritedCount: Int
+  favorites: [Favorited]
+}
+
+type Favorited {
+  _id: ID
+  createdAt: String
+  username: String
 }
 
 type Query {
@@ -32,6 +40,7 @@ type Mutation {
   login(username: String!, password: String!): Auth
   addUser(username: String!, password: String!): Auth
   addRecipe(recipeTitle: String!, recipeDescription: String!): Recipe
+  addFavorited(recipeId: ID!): Recipe
 }
 `;
 

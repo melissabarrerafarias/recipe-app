@@ -64,7 +64,18 @@ const resolvers = {
       }
     
       throw new AuthenticationError('You need to be logged in!');
-    }
+    }, 
+    addFavorited: async (parent, { recipeId }, context) => {
+      if (context.user) {
+        const updatedRecipe = await Recipe.findOneAndUpdate(
+          { _id: recipeId },
+          { $push: { favorites: { username: context.user.username } } },
+          { new: true, runValidators: true }
+        );
+        return updatedRecipe;
+      }
+      throw new AuthenticationError('You need to be logged in!')
+    },
   }
 };
 
