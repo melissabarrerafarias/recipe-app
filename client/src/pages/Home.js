@@ -20,7 +20,6 @@ const Home = () => {
                         <AllRecipes recipes={recipes} />
                     )}
                 </div>
-            <UploadRecipe/>
             </div>
         </main>
     );
