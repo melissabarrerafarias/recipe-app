@@ -4,12 +4,17 @@ const UploadRecipe = () => {
     const [imageUrl, setimageUrl] = useState(null);
     const [imageAlt, setimageAlt] = useState(null);
 
+    const CLOUD_NAME = process.env.REACT_APP_CLOUD_NAME; 
+    const API_PRESET = process.env.REACT_APP_API_PRESET;
+
+    console.log(CLOUD_NAME)
+
     const openWidget = () => {
         // create the widget
         const widget = window.cloudinary.createUploadWidget(
             {
-                cloudName: "",
-                uploadPreset: "",
+                cloudName: CLOUD_NAME,
+                uploadPreset: API_PRESET,
             },
             (error, result) => {
                 if (result.event === "success") {
