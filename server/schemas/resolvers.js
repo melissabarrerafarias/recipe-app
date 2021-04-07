@@ -1,6 +1,8 @@
 const { User, Recipe } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
+const cloudinary = require('cloudinary'); 
+require("dotenv").config();
 
 const resolvers = {
   Query: {
@@ -9,7 +11,7 @@ const resolvers = {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
           .populate('recipes')
-    
+
         return userData;
       }
       throw new AuthenticationError('Not logged in');
@@ -49,22 +51,22 @@ const resolvers = {
       }
       const token = signToken(user);
       return { token, user };
-    }, 
+    },
     addRecipe: async (parent, args, context) => {
       if (context.user) {
         const recipe = await Recipe.create({ ...args, username: context.user.username });
-    
+
         await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $push: { recipes: recipe._id } },
           { new: true }
         );
-    
+
         return recipe;
       }
-    
+
       throw new AuthenticationError('You need to be logged in!');
-    }, 
+    },
     addFavorited: async (parent, { recipeId }, context) => {
       if (context.user) {
         const updatedRecipe = await Recipe.findOneAndUpdate(

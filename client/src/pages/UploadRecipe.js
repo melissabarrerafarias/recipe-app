@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { ADD_RECIPE } from '../utils/mutations'; 
-import { QUERY_RECIPES } from '../utils/queries'; 
+import { ADD_RECIPE, UPLOAD_IMAGE } from '../utils/mutations'; 
 
-const UploadRecipe = () => {
+const UploadRecipe = ({ url }) => {
+    
     const [imageUrl, setimageUrl] = useState(null);
     const [imageAlt, setimageAlt] = useState(null);
     
