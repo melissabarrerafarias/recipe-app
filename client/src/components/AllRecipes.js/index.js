@@ -10,7 +10,9 @@ const AllRecipes = ({ recipes }) => {
             <h3>Recipes</h3>
             {recipes &&
                 recipes.map(recipe => (
+                  
                     <div key={recipe._id}>
+                        <img src={recipe.imageUrl}></img>
                          <p>{recipe.recipeTitle}</p>
                         <p>
                         {recipe.username}{' '}

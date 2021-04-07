@@ -6,6 +6,7 @@ export const QUERY_RECIPES = gql`
       _id
       recipeTitle 
       recipeDescription
+      imageUrl
       createdAt
       username
       favoritedCount

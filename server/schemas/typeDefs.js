@@ -11,6 +11,7 @@ type Recipe {
   _id: ID
   recipeTitle: String
   recipeDescription: String
+  imageUrl: String
   createdAt: String
   username: String
   favoritedCount: Int
@@ -39,7 +40,7 @@ type Auth {
 type Mutation {
   login(username: String!, password: String!): Auth
   addUser(username: String!, password: String!): Auth
-  addRecipe(recipeTitle: String!, recipeDescription: String!): Recipe
+  addRecipe(recipeTitle: String!, recipeDescription: String!, imageUrl: String): Recipe
   addFavorited(recipeId: ID!): Recipe
   deleteRecipe(recipeId: ID!): Recipe
 }

@@ -1,8 +1,7 @@
 const { User, Recipe } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
-const cloudinary = require('cloudinary'); 
-require("dotenv").config();
+const { cloudinary } = require('../utils/cloudinary') 
 
 const resolvers = {
   Query: {
@@ -28,6 +27,7 @@ const resolvers = {
     },
     recipes: async (parent, { username }) => {
       const params = username ? { username } : {};
+      
       return Recipe.find(params).sort({ createdAt: -1 });//return recipes in descending order
     },
     recipe: async (parent, { _id }) => {
@@ -53,7 +53,19 @@ const resolvers = {
       return { token, user };
     },
     addRecipe: async (parent, args, context) => {
+      console.log(args.imageUrl);
       if (context.user) {
+
+        try {
+          const imageStr = args.imageUrl; 
+          const uploadedResponse = await cloudinary.uploader.upload(imageStr, {
+            upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET
+          })
+          console.log(uploadedResponse); 
+        } catch (err) {
+          console.log(err)
+        }
+        
         const recipe = await Recipe.create({ ...args, username: context.user.username });
 
         await User.findByIdAndUpdate(
