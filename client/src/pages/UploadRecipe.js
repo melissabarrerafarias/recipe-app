@@ -81,22 +81,22 @@ const UploadRecipe = () => {
     return (
         <main>
             <h1 className="text-center">Create a Recipe!</h1>
-            <div class="container d-flex justify-content-center">
-                <form onSubmit={handleFormSubmit}class="col-md-6">
+            <div className="container d-flex justify-content-center">
+                <form onSubmit={handleFormSubmit}className="col-md-6">
                 <section>
                     {imageUrl && (
                         <img src={imageUrl} alt={imageAlt} />
                     )}
                 </section>
-                    <div class="form-group">
+                    <div className="form-group">
                         <label>Recipe Title</label>
-                        <input class="form-control" placeholder="Enter Recipe Title" value={recipeTitle} onChange={onTitleChange}/>
+                        <input className="form-control" placeholder="Enter Recipe Title" value={recipeTitle} onChange={onTitleChange}/>
                     </div>
-                    <textarea class="form-control" rows="3" placeholder="Describe this recipe!" value={recipeDescription} onChange={onDescriptionChange}></textarea>
+                    <textarea className="form-control" rows="3" placeholder="Describe this recipe!" value={recipeDescription} onChange={onDescriptionChange}></textarea>
                     <button type="button" onClick={openWidget}>
                         Upload Recipe Photo
                     </button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </div>
         </main>

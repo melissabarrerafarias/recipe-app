@@ -2,7 +2,6 @@ import { useQuery } from '@apollo/react-hooks';
 import { QUERY_RECIPES } from '../utils/queries';
 
 import AllRecipes from '../components/AllRecipes.js';
-import UploadRecipe from './UploadRecipe'; 
 
 const Home = () => {
     // use useQuery hook to make query request
