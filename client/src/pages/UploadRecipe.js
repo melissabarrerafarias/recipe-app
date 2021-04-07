@@ -13,24 +13,7 @@ const UploadRecipe = () => {
     const [recipeDescription, setDescription] = useState('');
     const [recipeTitle, setTitle ] = useState('');
 
-    const [addRecipe] = useMutation(ADD_RECIPE, {
-        update(cache, { data: { addRecipe } }) {
-
-            try {
-                // read what's currently in the cache
-                const { recipes } = cache.readQuery({ query: QUERY_RECIPES });
-
-                // prepend the newest thought to the front of the array 
-                cache.writeQuery({
-                    query: QUERY_RECIPES,
-                    data: { recipes: [addRecipe, ...recipes] }
-                });
-            }
-            catch (e) {
-                console.log(e);
-            }
-        }
-    });
+    const [addRecipe] = useMutation(ADD_RECIPE);
     
     const onTitleChange = event => {
         if (event.target.value.length) {
@@ -53,6 +36,7 @@ const UploadRecipe = () => {
             });
             setDescription('');
             setTitle('');
+            window.location.assign('/')
         }
         catch (e) {
             console.log(e)
