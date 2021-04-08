@@ -4,6 +4,8 @@ const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');// mongoose database connection
 const { authMiddleware } = require('./utils/auth');
+const bodyParser = require('body-parser');
+
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -18,8 +20,12 @@ const server = new ApolloServer({
 // integrate Apollo server with the Express application as middleware
 server.applyMiddleware({ app });
 
-app.use(express.urlencoded({ limit: "50mb", extended: true }));
-app.use(express.json({ limit: '50mb' }));
+app.use(bodyParser.json({limit: '50mb', extended: true}))
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
+
+// app.use(express.json({limit: '50mb'}));
+// app.use(express.urlencoded({limit: '50mb'}));
+
 
 // Serve up static assets
 if (process.env.NODE_ENV === 'production') {

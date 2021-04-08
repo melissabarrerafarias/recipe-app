@@ -58,7 +58,7 @@ const resolvers = {
 
         try {
           const imageStr = args.imageUrl; 
-          const uploadedResponse = await cloudinary.uploader.upload(imageStr, {
+          const uploadedResponse = await cloudinary.uploader.upload(imageStr, {//upload image to cloudinary
             upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET
           })
           console.log(uploadedResponse); 
