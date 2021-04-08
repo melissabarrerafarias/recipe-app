@@ -53,15 +53,13 @@ const resolvers = {
       return { token, user };
     },
     addRecipe: async (parent, args, context) => {
-      console.log(args.imageUrl);
       if (context.user) {
 
         try {
-          const imageStr = args.imageUrl; 
-          const uploadedResponse = await cloudinary.uploader.upload(imageStr, {//upload image to cloudinary
+          const imageStr = args.imageUrl; //get imageUrl to upload to cloudinary 
+          await cloudinary.uploader.upload(imageStr, {//upload image to cloudinary
             upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET
           })
-          console.log(uploadedResponse); 
         } catch (err) {
           console.log(err)
         }
@@ -73,7 +71,6 @@ const resolvers = {
           { $push: { recipes: recipe._id } },
           { new: true }
         );
-
         return recipe;
       }
 

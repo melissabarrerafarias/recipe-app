@@ -8,11 +8,12 @@ const AllRecipes = ({ recipes }) => {
     return (
         <div>
             <h3>Recipes</h3>
+            <div className="flex-container">
             {recipes &&
                 recipes.map(recipe => (
-                  
-                    <div key={recipe._id}>
-                        <img src={recipe.imageUrl}></img>
+                    <div className="row justify-content-center">
+                    <div className="col-md-6" key={recipe._id}>
+                        <img src={recipe.imageUrl} style={{height: '300px'}} className="d-block m-auto"></img>
                          <p>{recipe.recipeTitle}</p>
                         <p>
                         {recipe.username}{' '}
@@ -24,7 +25,9 @@ const AllRecipes = ({ recipes }) => {
                             </p>
                         </div>
                     </div>
+                    </div>
                 ))}
+                </div>
         </div>
     );
 };
