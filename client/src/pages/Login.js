@@ -3,6 +3,8 @@ import { useMutation } from '@apollo/react-hooks';
 import { LOGIN } from '../utils/mutations'; // mutation for login
 import Auth from '../utils/auth'; // authentication 
 
+import '../login.css'
+
 
 const Login = () => {
     const [formState, setFormState] = useState({ username: "", password: "" });
@@ -28,34 +30,36 @@ const Login = () => {
     };
 
     return (
-        <main className="container">
-            <h1>Login</h1>
-            <form onSubmit={onFormSubmit}>
+      <body className="login-body">
+        <main className="container pt-5">
+            <form onSubmit={onFormSubmit} className="col-md-4">
+            <h1 className="login-title text-center pb-3">Login</h1>
                 <div className="mb-3">
                 <input
-                  placeholder="username"
-                  className="form-control"
+                  className="form-login"
                   name="username"
                   type="username"
                   id="username"
                   value={formState.username}
                   onChange={onFormChange}
                 />
+                <label for="name" className="form-label">username</label>
                 </div>
                 <div class="mb-3">
                 <input
-                  placeholder="password"
-                  className="form-control"
+                  className="form-login"
                   name="password"
                   type="password"
                   id="password"
                   value={formState.password}
                   onChange={onFormChange}
                 />
+                <label for="name" className="form-label">password</label>
                 </div>
-                <button type="submit" className="btn btn-primary">Enter</button>
+                <button type="submit" className="login-button">Enter</button>
             </form>
         </main>
+        </body>
     )
 }
 

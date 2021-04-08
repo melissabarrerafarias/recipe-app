@@ -1,4 +1,5 @@
 import React from 'react';
+import './allrecipes.css';
 
 const AllRecipes = ({ recipes }) => {
     if (!recipes.length) {
@@ -7,23 +8,18 @@ const AllRecipes = ({ recipes }) => {
 
     return (
         <div>
-            <h3>Recipes</h3>
+            <h3 className="text-center home-title">Recipes</h3>
             <div className="flex-container">
             {recipes &&
                 recipes.map(recipe => (
                     <div className="row justify-content-center">
-                    <div className="col-md-6" key={recipe._id}>
-                        <img src={recipe.imageUrl} style={{height: '300px'}} className="d-block m-auto"></img>
-                         <p>{recipe.recipeTitle}</p>
-                        <p>
-                        {recipe.username}{' '}
-                            posted on {recipe.createdAt}
-                        </p>
-                        <div>
-                            <p>
-                                Favorited by: {recipe.favoritedCount} users!
-                            </p>
+                    <div className="col-md-4 recipe-home" key={recipe._id}>
+                        <img src={recipe.imageUrl} className="d-block m-auto"></img>
+                        <div className="row">
+                        <p className="col recipeTitle-home">{recipe.recipeTitle}</p>
+                        <p className="col text-right recipe-details mt-2">by {recipe.username} on {recipe.createdAt}</p>
                         </div>
+                        <p className="text-right recipe-details">Favorited by {recipe.favoritedCount} users</p>
                     </div>
                     </div>
                 ))}
