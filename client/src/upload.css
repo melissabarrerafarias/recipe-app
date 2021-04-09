@@ -1,0 +1,51 @@
+.add-recipe {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background: transparent;
+    color: black;
+    border: 0;
+    border-bottom: 2px solid white;
+    transition: border-color 0.2s;
+}
+
+.add-recipe:focus {
+    transition: 0.2s;
+    font-size: 1rem;
+    color: black;
+    outline: none
+}
+
+.textarea-recipe {
+    height: 210px
+}
+
+.inputfile {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: red;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+}
