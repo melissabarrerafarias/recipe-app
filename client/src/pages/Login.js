@@ -54,7 +54,7 @@ const Login = () => {
                   value={formState.password}
                   onChange={onFormChange}
                 />
-                <label for="name" className="form-label">password</label>
+                <label for="password" className="form-label">password</label>
                 </div>
                 <button type="submit" className="login-button">Enter</button>
             </form>
