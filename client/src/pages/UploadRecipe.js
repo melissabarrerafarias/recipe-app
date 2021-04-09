@@ -75,7 +75,9 @@ const UploadRecipe = () => {
                             
                             <input type="file" name="file" id="file"  onChange={handleImageInput} value={imageInputState} className="inputfile" />
                             <label for ="file" className="mt-3">Choose an image</label>
-                            <button type="submit" className="btn btn-primary">Submit</button>
+                            <div>
+                            <button type="submit" className="recipe-submit-btn mt-2">Upload Recipe</button>
+                            </div>
                         </form>
                     </div>
 
