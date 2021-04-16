@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_RECIPE } from '../utils/queries';
 import { useParams } from 'react-router-dom';
+import '../singlerecipe.css'
 
 const SingleRecipe = () => {
     const { id: recipeId } = useParams();
@@ -20,23 +21,26 @@ const SingleRecipe = () => {
     }
 
     return (
-        <main> 
-            <div>
-                <p>this is rendering</p>
-            </div>
-            <div className="flex-container"> 
-            <div className="row justify-content-center">
-                    <div className="col-md-4 recipe-home" key={recipe._id}>
+        <main>
+            <div className="flex-container">
+                <div className="justify-content-center">
+
+                    <div className="single-img">
                         <img src={recipe.imageUrl} className="d-block m-auto"></img>
-                        <div className="row">
-                        <p className="col recipeTitle-home">{recipe.recipeTitle}</p>
-                        <p className="col text-right recipe-details mt-2">by {recipe.username} on {recipe.createdAt}</p>
-                        </div>
-                        <p className="text-right recipe-details">Favorited by {recipe.favoritedCount} users</p>
-                    
-                    </div>
                     </div>
 
+                   
+                        <h1 className="text-center single-title">{recipe.recipeTitle}</h1>
+
+                        <h3 className="text-center single-user"> {recipe.username} on {recipe.createdAt}</h3>
+
+                        <div>
+                            <p>{recipe.recipeDescription}</p>
+                        </div> 
+                
+                    <p className="">Favorited by {recipe.favoritedCount} users</p>
+
+                </div>
             </div>
         </main>
     )
