@@ -7,7 +7,7 @@ const Home = () => {
     // use useQuery hook to make query request
     const { loading, data } = useQuery(QUERY_RECIPES);
     const recipes = data?.recipes || [];
-    console.log(recipes);
+    // console.log(recipes);
 
     return (
         <main>

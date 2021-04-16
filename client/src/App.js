@@ -8,6 +8,7 @@ import UploadRecipe from './pages/UploadRecipe';
 import Header from './components/Header';
 import Login from './pages/Login'; 
 import SignUp from './pages/Signup';
+import SingleRecipe from './pages/SingleRecipe';
 
 const client = new ApolloClient({
   request: operation => {
@@ -32,6 +33,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/upload" component={UploadRecipe} />
+        <Route exact path="/recipe/:id" component={SingleRecipe} />
         </Switch>
       </Router>
     </ApolloProvider>

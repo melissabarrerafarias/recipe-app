@@ -18,3 +18,21 @@ export const QUERY_RECIPES = gql`
     }
   }
 `;
+
+export const QUERY_RECIPE = gql `
+  query recipe($id: ID!) {
+    recipe(_id: $id) {
+      _id
+      recipeTitle 
+      recipeDescription
+      imageUrl
+      createdAt
+      username
+      favoritedCount
+      favorites {
+        _id
+        username
+      }
+    }
+  }
+`
