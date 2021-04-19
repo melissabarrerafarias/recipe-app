@@ -14,10 +14,11 @@
 }
 
 .add-recipe:focus {
-    transition: 0.2s;
+    transition: 0.5s;
     font-size: 1rem;
     color: black;
-    outline: none
+    outline: none; 
+    background-color: white;
 }
 
 .textarea-recipe {

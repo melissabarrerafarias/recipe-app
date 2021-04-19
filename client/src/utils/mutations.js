@@ -1,11 +1,12 @@
 import gql from "graphql-tag";
 
 export const ADD_RECIPE = gql`
-mutation addRecipe($recipeTitle: String!, $recipeDescription: String!, $imageUrl: String) {
-    addRecipe(recipeTitle: $recipeTitle, recipeDescription: $recipeDescription, imageUrl: $imageUrl) {
+mutation addRecipe($recipeTitle: String!, $recipeDescription: String!, $recipeInstructions: String!, $imageUrl: String) {
+    addRecipe(recipeTitle: $recipeTitle, recipeDescription: $recipeDescription, recipeInstructions: $recipeInstructions, imageUrl: $imageUrl) {
       _id
       recipeTitle
       recipeDescription
+      recipeInstructions
       imageUrl
       createdAt
       username

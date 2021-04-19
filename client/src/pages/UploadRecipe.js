@@ -9,6 +9,7 @@ const UploadRecipe = () => {
     const [previewSource, setPreviewSource] = useState();
     const [recipeDescription, setDescription] = useState('');
     const [recipeTitle, setTitle] = useState('');
+    const [recipeInstructions, setRecipeInstructions] = useState(''); 
 
     const [addRecipe] = useMutation(ADD_RECIPE);
 
@@ -37,6 +38,12 @@ const UploadRecipe = () => {
         };
     }
 
+    const onInstructionChange = event => {
+        if (event.target.value.length <= 1000) {
+            setRecipeInstructions(event.target.value)
+        }
+    }
+
     const handleFormSubmit = event => {
         event.preventDefault();
         if (!previewSource) return; //if user has not selected an image 
@@ -48,7 +55,7 @@ const UploadRecipe = () => {
 
         try {
             await addRecipe({
-                variables: { recipeTitle, recipeDescription, imageUrl }
+                variables: { recipeTitle, recipeDescription, recipeInstructions, imageUrl }
             });
             setDescription('');
             setTitle('');
@@ -61,7 +68,7 @@ const UploadRecipe = () => {
 
     return (
         <main>
-            <h1 className="text-center">Create a Recipe!</h1>
+            <h1 className="text-center mt-4">Create a Recipe!</h1>
             <div className="flex-container mt-5">
                 <div className="row">
                     <div className="col d-flex justify-content-end">
@@ -72,6 +79,9 @@ const UploadRecipe = () => {
                             </div>
                             <label>Recipe Description</label>
                             <textarea className="add-recipe textarea-recipe" rows="3" value={recipeDescription} onChange={onDescriptionChange}></textarea>
+
+                            <label>Recipe Instructions</label>
+                            <textarea className="add-recipe textarea-recipe" row="3" value={recipeInstructions} onChange={onInstructionChange}></textarea>
                             
                             <input type="file" name="file" id="file"  onChange={handleImageInput} value={imageInputState} className="inputfile" />
                             <label for ="file" className="mt-3">Choose an image</label>

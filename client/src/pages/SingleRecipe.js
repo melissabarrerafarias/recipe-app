@@ -14,7 +14,7 @@ const SingleRecipe = () => {
 
     const recipe = data?.recipe || {};
 
-    // console.log(recipe)
+    console.log(recipe.recipeInstructions)
 
     if (loading) {
         return <div>Loading...</div>;
@@ -37,6 +37,12 @@ const SingleRecipe = () => {
                         <div>
                             <p>{recipe.recipeDescription}</p>
                         </div> 
+
+                        <div>
+                            <p>
+                                {recipe.recipeInstructions}
+                            </p>
+                        </div>
                 
                     <p className="">Favorited by {recipe.favoritedCount} users</p>
 

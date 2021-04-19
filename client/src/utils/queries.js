@@ -25,6 +25,7 @@ export const QUERY_RECIPE = gql `
       _id
       recipeTitle 
       recipeDescription
+      recipeInstructions
       imageUrl
       createdAt
       username
