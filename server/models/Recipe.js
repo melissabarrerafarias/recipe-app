@@ -15,6 +15,10 @@ const RecipeSchema = new Schema(
       minlength: 1,
       maxlength: 300
     },
+    recipeInstructions: {
+      type: String, 
+      required: 'You need to let others know how to make this recipe!'
+    },
     createdAt: {
       type: Date,
       default: Date.now,
@@ -26,7 +30,7 @@ const RecipeSchema = new Schema(
     }, 
     imageUrl: {
       type: String, 
-      required: true 
+      required: true //for testing in graphql playground either get imageUrl from front end or comment out this line
     },
     favorites: [FavoritedSchema]
   },
