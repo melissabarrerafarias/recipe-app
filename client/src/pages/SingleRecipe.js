@@ -28,23 +28,24 @@ const SingleRecipe = () => {
                     <div className="single-img">
                         <img src={recipe.imageUrl} className="d-block m-auto"></img>
                     </div>
+                    <div className="text-center">
+                        <h1 className="single-title">{recipe.recipeTitle}</h1>
+                        <h3 className="single-user"> {recipe.username} on {recipe.createdAt}</h3>
+                    </div>
+                    <div className="text-center mt-3">
+                        <p className="single-description">{recipe.recipeDescription}</p>
+                    </div>
+                    <div className="text-center">
+                    <p className="single-favorites">Favorited by {recipe.favoritedCount} users</p>
+                    </div>
+                    <div className="text-center mt-3">
+                        <h1>How to make it:</h1>
+                        <div className="d-flex justify-content-center">
+                        <p className="col-6 single-instructions">{recipe.recipeInstructions}</p>
+                        </div>
+                    </div>
 
                    
-                        <h1 className="text-center single-title">{recipe.recipeTitle}</h1>
-
-                        <h3 className="text-center single-user"> {recipe.username} on {recipe.createdAt}</h3>
-
-                        <div>
-                            <p>{recipe.recipeDescription}</p>
-                        </div> 
-
-                        <div>
-                            <p>
-                                {recipe.recipeInstructions}
-                            </p>
-                        </div>
-                
-                    <p className="">Favorited by {recipe.favoritedCount} users</p>
 
                 </div>
             </div>
